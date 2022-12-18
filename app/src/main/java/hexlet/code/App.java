@@ -1,27 +1,33 @@
 package hexlet.code;
 
-import hexlet.code.game.GameFactory;
-import hexlet.code.game.UnsupportedGameException;
+import hexlet.code.games.GameFactory;
+import hexlet.code.menu.Menu;
+import hexlet.code.menu.Option;
 
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
         try (Scanner scanner = new Scanner(System.in)) {
-            var gameType = Menu.findGame(scanner);
+            final var option = Menu.findGame(scanner);
 
-            switch (gameType) {
-                case GREET -> Cli.findUserName(scanner);
-                case EVEN -> {
-                    var userName = Cli.findUserName(scanner);
-                    GameFactory.create(gameType, userName, scanner).play();
-                }
-                default -> {
-                    // Exit
-                }
+            if (option == Option.UNRECOGNIZED) {
+                return;
             }
-        } catch (UnsupportedGameException e) {
-            System.out.println("Wrong game number. Let's try again.");
+
+            final var userName = Cli.findUserName(scanner);
+
+            if (option == Option.GREET) {
+                return;
+            }
+
+            final var game = GameFactory.create(option, userName, scanner);
+
+            if (game == null) {
+                return;
+            }
+
+            game.play();
         } catch (Exception e) {
             System.out.println("Error. Let's try again.");
         }

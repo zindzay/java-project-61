@@ -1,6 +1,4 @@
-package hexlet.code;
-
-import hexlet.code.game.Type;
+package hexlet.code.menu;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -10,26 +8,27 @@ public final class Menu {
         throw new IllegalStateException("Utility class");
     }
 
-    public static Type findGame(Scanner scanner) {
+    public static Option findGame(Scanner scanner) {
         System.out.println("Please enter the game number and press Enter.");
         System.out.println("1 - Greet");
         System.out.println("2 - Even");
+        System.out.println("3 - Calc");
         System.out.println("0 - Exit");
 
         try {
-            var gameNumber = scanner.nextInt();
+            final var gameNumber = scanner.nextInt();
 
             System.out.println("Your choice: " + gameNumber);
 
-            return Type.valueOf(gameNumber);
+            return Option.valueOf(gameNumber);
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Unknown game.");
 
-            return Type.UNRECOGNIZED;
+            return Option.UNRECOGNIZED;
         } catch (InputMismatchException e) {
             System.out.println("The game number must be an integer.");
 
-            return Type.UNRECOGNIZED;
+            return Option.UNRECOGNIZED;
         }
     }
 }
