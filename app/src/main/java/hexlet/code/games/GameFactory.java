@@ -13,6 +13,7 @@ public final class GameFactory {
         return switch (option) {
             case EVEN_GAME -> new EvenGame(userName, scanner);
             case CALC_GAME -> new CalcGame(userName, scanner);
+            case DIVISOR_GAME -> new DivisorGame(userName, scanner);
             default -> null;
         };
     }

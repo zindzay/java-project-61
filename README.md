@@ -5,6 +5,7 @@
 ## Игры:
 - [Проверка на чётность](https://asciinema.org/a/eJdIejU3L4ZAf3CHaJHTz0Ngm)
 - [Калькулятор](https://asciinema.org/a/oCkd8Ib2epOM3pZmh9GJcAJT1)
+- [НОД](https://asciinema.org/a/gIn3ms7hOHfz5DI1QcoEfzIJI)
 
 ## Start
 
