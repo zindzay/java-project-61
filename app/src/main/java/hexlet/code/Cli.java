@@ -7,16 +7,12 @@ public final class Cli {
         throw new IllegalStateException("Utility class");
     }
 
-    public static void printWelcomeMessage() {
+    public static String findUserName(Scanner scanner) {
         System.out.println("Welcome to the Brain Games!");
-    }
-
-    public static void findUser() {
-        Scanner scanner = new Scanner(System.in);
-
         System.out.print("May I have your name? ");
-        String userName = scanner.next();
+        String userName = scanner.hasNext() ? scanner.next() : "";
         System.out.println("Hello, " + userName + "!");
-        scanner.close();
+
+        return userName;
     }
 }
