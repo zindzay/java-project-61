@@ -3,6 +3,7 @@ package hexlet.code.games;
 import java.util.Scanner;
 
 public final class ProgressionGame extends Engine {
+    private static final String DESCRIPTION = "What number is missing in the progression?";
     private static final int MIN_NUMBER_IN_PROGRESSION = 5;
     private static final int MAX_NUMBER_IN_PROGRESSION = 10;
     private static final int MIN_STEP = 1;
@@ -32,8 +33,8 @@ public final class ProgressionGame extends Engine {
     }
 
     @Override
-    protected void showDescription() {
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
+    protected String getDescription() {
+        return DESCRIPTION;
     }
 
     @Override

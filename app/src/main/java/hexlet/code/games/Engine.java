@@ -22,7 +22,7 @@ abstract class Engine implements Game {
 
     @Override
     public void play() {
-        showDescription();
+        System.out.println(getDescription());
 
         for (int i = 0; i < NUMBER_OF_QUESTIONS; i++) {
             final var question = createQuestion();
@@ -54,7 +54,7 @@ abstract class Engine implements Game {
         return random.nextInt((max - min) + 1) + min;
     }
 
-    protected abstract void showDescription();
+    protected abstract String getDescription();
 
     protected abstract String createQuestion();
 

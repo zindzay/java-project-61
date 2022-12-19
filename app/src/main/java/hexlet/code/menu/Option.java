@@ -6,7 +6,8 @@ public enum Option {
     EVEN_GAME(2, "Even"),
     CALC_GAME(3, "Calc"),
     DIVISOR_GAME(4, "Divisor"),
-    PROGRESSION(5, "Progression");
+    PROGRESSION(5, "Progression"),
+    PRIME(6, "Prime");
 
     private final int id;
     private final String description;

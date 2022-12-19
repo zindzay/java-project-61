@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public final class CalcGame extends Engine {
+    private static final String DESCRIPTION = "What is the result of the expression?";
     private static final List<String> OPERATIONS = List.of("+", "-", "*");
     private static final int OPERATIONS_MIN_INDEX = 0;
     private static final int OPERATIONS_MAX_INDEX = OPERATIONS.size() - 1;
@@ -29,8 +30,8 @@ public final class CalcGame extends Engine {
     }
 
     @Override
-    protected void showDescription() {
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
+    protected String getDescription() {
+        return DESCRIPTION;
     }
 
     @Override

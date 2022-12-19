@@ -4,9 +4,10 @@
 
 ## Игры:
 - [Проверка на чётность](https://asciinema.org/a/eJdIejU3L4ZAf3CHaJHTz0Ngm)
-- [Калькулятор](https://asciinema.org/a/oCkd8Ib2epOM3pZmh9GJcAJT1)
-- [НОД](https://asciinema.org/a/gIn3ms7hOHfz5DI1QcoEfzIJI)
-- [Арифметическая прогрессия](https://asciinema.org/a/OX4NAqJKBjmHAg3cGL5Zf0WKe)
+- [Калькулятор](https://asciinema.org/a/nOoNt7ON0BG9MKWBjqYetYrnE)
+- [НОД](https://asciinema.org/a/gdqa4ZiExv8xHfpM8m2c60Ttn)
+- [Арифметическая прогрессия](https://asciinema.org/a/9nKNIXTn4RH71ktZ2CJN6REWY)
+- [Простое ли число?](https://asciinema.org/a/pNgTLuj0djwQXXsZCPewr60VO)
 
 ## Start
 

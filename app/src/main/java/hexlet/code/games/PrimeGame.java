@@ -1,14 +1,15 @@
 package hexlet.code.games;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Scanner;
 
-public final class EvenGame extends Engine {
-    private static final String DESCRIPTION = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+public final class PrimeGame extends Engine {
+    private static final String DESCRIPTION = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     private static final String YES = "yes";
     private static final String NO = "no";
 
-    public EvenGame(String userName, Scanner scanner) {
+    public PrimeGame(String userName, Scanner scanner) {
         super(userName, scanner);
     }
 
@@ -39,8 +40,9 @@ public final class EvenGame extends Engine {
 
 
     private String calcAnswer(int number) {
-        final var isEven = number % 2 == 0;
+        final BigInteger bigInteger = BigInteger.valueOf(number);
+        final boolean isPrime = bigInteger.isProbablePrime((int) Math.log(number));
 
-        return isEven ? YES : NO;
+        return isPrime ? YES : NO;
     }
 }

@@ -3,6 +3,8 @@ package hexlet.code.games;
 import java.util.Scanner;
 
 public final class DivisorGame extends Engine {
+    private static final String DESCRIPTION = "Find the greatest common divisor of given numbers.";
+
     public DivisorGame(String userName, Scanner scanner) {
         super(userName, scanner);
     }
@@ -20,8 +22,8 @@ public final class DivisorGame extends Engine {
     }
 
     @Override
-    protected void showDescription() {
-        System.out.println("Find the greatest common divisor of given numbers.");
+    protected String getDescription() {
+        return DESCRIPTION;
     }
 
     @Override
@@ -34,7 +36,7 @@ public final class DivisorGame extends Engine {
         var min = Math.min(num1, num2);
 
         while (min != 0) {
-            int tmp = max % min;
+            var tmp = max % min;
             max = min;
             min = tmp;
         }

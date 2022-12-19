@@ -16,6 +16,7 @@ public final class GameFactory {
             case CALC_GAME -> new CalcGame(userName, scanner);
             case DIVISOR_GAME -> new DivisorGame(userName, scanner);
             case PROGRESSION -> new ProgressionGame(userName, scanner);
+            case PRIME -> new PrimeGame(userName, scanner);
             default -> throw new UnsupportedGameException();
         };
     }
