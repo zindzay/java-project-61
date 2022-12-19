@@ -9,8 +9,7 @@ public final class Menu {
     }
 
     public static Option findGame(Scanner scanner) {
-        System.out.println("Please enter the game number and press Enter.");
-        Option.print();
+        System.out.println("Please enter the game number and press Enter.\n" + Option.toStringOptions());
 
         try {
             final var gameNumber = scanner.nextInt();
@@ -19,11 +18,11 @@ public final class Menu {
 
             return Option.valueOf(gameNumber);
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("Unknown game.");
+            System.out.println("Unknown option.");
 
             return Option.UNRECOGNIZED;
         } catch (InputMismatchException e) {
-            System.out.println("The game number must be an integer.");
+            System.out.println("The option must be an integer.");
 
             return Option.UNRECOGNIZED;
         }

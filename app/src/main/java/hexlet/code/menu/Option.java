@@ -5,7 +5,8 @@ public enum Option {
     GREET(1, "Greet"),
     EVEN_GAME(2, "Even"),
     CALC_GAME(3, "Calc"),
-    DIVISOR_GAME(4, "Divisor");
+    DIVISOR_GAME(4, "Divisor"),
+    PROGRESSION(5, "Progression");
 
     private final int id;
     private final String description;
@@ -21,9 +22,13 @@ public enum Option {
         return VALUES[id];
     }
 
-    public static void print() {
+    public static String toStringOptions() {
+        final var sb = new StringBuilder();
+
         for (var value : VALUES) {
-            System.out.println(value.id + " - " + value.description);
+            sb.append(value.id).append(" - ").append(value.description).append("\n");
         }
+
+        return sb.toString();
     }
 }

@@ -17,7 +17,7 @@ public final class EvenGame extends Engine {
 
         setAnswer(calcAnswer(number));
 
-        return number.toString();
+        return String.valueOf(number);
     }
 
     @Override

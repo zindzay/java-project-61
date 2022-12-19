@@ -1,5 +1,6 @@
 package hexlet.code.games;
 
+import hexlet.code.games.exception.UnsupportedGameException;
 import hexlet.code.menu.Option;
 
 import java.util.Scanner;
@@ -14,7 +15,8 @@ public final class GameFactory {
             case EVEN_GAME -> new EvenGame(userName, scanner);
             case CALC_GAME -> new CalcGame(userName, scanner);
             case DIVISOR_GAME -> new DivisorGame(userName, scanner);
-            default -> null;
+            case PROGRESSION -> new ProgressionGame(userName, scanner);
+            default -> throw new UnsupportedGameException();
         };
     }
 }

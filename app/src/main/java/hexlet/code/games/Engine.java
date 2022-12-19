@@ -20,31 +20,6 @@ abstract class Engine implements Game {
         this.random = new Random();
     }
 
-    protected String getAnswer() {
-        return answer;
-    }
-
-    protected void setAnswer(String answer) {
-        this.answer = answer;
-    }
-
-    private String getUserAnswer(String question) {
-        System.out.println("Question: " + question);
-        System.out.print("Your answer: ");
-
-        return scanner.next();
-    }
-
-    protected abstract void showDescription();
-
-    protected abstract String createQuestion();
-
-    protected abstract boolean isRightAnswer(String userAnswer);
-
-    protected Integer getNewNumber(int min, int max) {
-        return random.nextInt((max - min) + 1) + min;
-    }
-
     @Override
     public void play() {
         showDescription();
@@ -54,14 +29,40 @@ abstract class Engine implements Game {
             final var userAnswer = getUserAnswer(question);
 
             if (!isRightAnswer(userAnswer)) {
-                System.out.println("'" + userAnswer
-                        + "' is wrong answer ;(. Correct answer was " + "'" + getAnswer() + "'.");
-                System.out.println("Let's try again, " + userName + "!");
+                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was "
+                        + "'" + getAnswer() + "'.\n"
+                        + "Let's try again, " + userName + "!"
+
+                );
 
                 return;
             }
         }
 
         System.out.println("Congratulations, " + userName + "!");
+    }
+
+    protected void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    protected String getAnswer() {
+        return answer;
+    }
+
+    protected int getNewNumber(int min, int max) {
+        return random.nextInt((max - min) + 1) + min;
+    }
+
+    protected abstract void showDescription();
+
+    protected abstract String createQuestion();
+
+    protected abstract boolean isRightAnswer(String userAnswer);
+
+    private String getUserAnswer(String question) {
+        System.out.print("Question: " + question + "\n" + "Your answer: ");
+
+        return scanner.next();
     }
 }

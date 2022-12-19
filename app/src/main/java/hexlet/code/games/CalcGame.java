@@ -1,5 +1,7 @@
 package hexlet.code.games;
 
+import hexlet.code.games.exception.UnsupportedOperationException;
+
 import java.util.List;
 import java.util.Scanner;
 
