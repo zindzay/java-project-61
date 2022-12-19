@@ -14,9 +14,9 @@ abstract class Engine implements Game {
 
     private String answer = "UNRECOGNIZED";
 
-    protected Engine(String userName, Scanner scanner) {
-        this.userName = userName;
-        this.scanner = scanner;
+    protected Engine(String newUserName, Scanner newScanner) {
+        this.userName = newUserName;
+        this.scanner = newScanner;
         this.random = new Random();
     }
 
@@ -32,7 +32,6 @@ abstract class Engine implements Game {
                 System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was "
                         + "'" + getAnswer() + "'.\n"
                         + "Let's try again, " + userName + "!"
-
                 );
 
                 return;
@@ -42,8 +41,8 @@ abstract class Engine implements Game {
         System.out.println("Congratulations, " + userName + "!");
     }
 
-    protected void setAnswer(String answer) {
-        this.answer = answer;
+    protected void setAnswer(String newAnswer) {
+        this.answer = newAnswer;
     }
 
     protected String getAnswer() {

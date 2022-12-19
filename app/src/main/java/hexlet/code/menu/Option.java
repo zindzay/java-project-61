@@ -12,9 +12,9 @@ public enum Option {
     private final int id;
     private final String description;
 
-    Option(int id, String description) {
-        this.id = id;
-        this.description = description;
+    Option(int newId, String newDescription) {
+        this.id = newId;
+        this.description = newDescription;
     }
 
     private static final Option[] VALUES = values();
