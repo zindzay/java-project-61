@@ -1,4 +1,4 @@
-package hexlet.code.games.exception;
+package hexlet.code.exceptions;
 
 public class UnsupportedOperationException extends RuntimeException {
     public UnsupportedOperationException() {

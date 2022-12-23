@@ -4,10 +4,6 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public final class Menu {
-    private Menu() {
-        throw new IllegalStateException("Utility class");
-    }
-
     public static Option findGame(Scanner scanner) {
         System.out.println("Please enter the game number and press Enter.\n" + Option.toStringOptions());
 

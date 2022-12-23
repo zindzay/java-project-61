@@ -1,5 +1,3 @@
 package hexlet.code.games;
 
-public interface Game {
-    void play();
-}
+public record Game(String question, String answer) { }

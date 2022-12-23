@@ -1,7 +1,6 @@
 package hexlet.code;
 
-import hexlet.code.games.GameFactory;
-import hexlet.code.games.exception.UnsupportedGameException;
+import hexlet.code.exceptions.UnsupportedGameException;
 import hexlet.code.menu.Menu;
 import hexlet.code.menu.Option;
 
@@ -22,7 +21,7 @@ public class App {
                 return;
             }
 
-            GameFactory.create(option, userName, scanner).play();
+            Game.play(scanner, option, userName);
         } catch (UnsupportedGameException e) {
             System.out.println("Wrong game number. Let's try again.");
         } catch (Exception e) {

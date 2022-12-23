@@ -1,46 +1,34 @@
 package hexlet.code.games;
 
-import java.util.List;
-import java.util.Scanner;
+import hexlet.code.Params;
+import hexlet.code.Utils;
 
-public final class EvenGame extends Engine {
-    private static final String DESCRIPTION = "Answer 'yes' if the number is even, otherwise answer 'no'.";
-    private static final String YES = "yes";
-    private static final String NO = "no";
+public final class EvenGame {
+    public static final String DESCRIPTION = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
-    public EvenGame(String userName, Scanner scanner) {
-        super(userName, scanner);
-    }
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 99;
 
-    @Override
-    protected String createQuestion() {
-        final var number = getNewNumber(MIN_NUMBER, MAX_NUMBER);
+    public static Game[] create() {
+        final var games = new Game[Params.NUMBER_OF_QUESTIONS];
 
-        setAnswer(calcAnswer(number));
+        for (var i = 0; i < Params.NUMBER_OF_QUESTIONS; i++) {
+            final var question = getQuestion();
+            final var answer = getAnswer(question);
 
-        return String.valueOf(number);
-    }
-
-    @Override
-    protected String getDescription() {
-        return DESCRIPTION;
-    }
-
-    @Override
-    protected boolean isRightAnswer(String userAnswer) {
-        final var answerOptions = List.of(YES, NO);
-
-        if (!answerOptions.contains(userAnswer)) {
-            return false;
+            games[i] = new Game(String.valueOf(question), answer);
         }
 
-        return getAnswer().equals(userAnswer);
+        return games;
     }
 
+    private static int getQuestion() {
+        return Utils.getNewNumber(MIN_NUMBER, MAX_NUMBER);
+    }
 
-    private String calcAnswer(int number) {
+    private static String getAnswer(int number) {
         final var isEven = number % 2 == 0;
 
-        return isEven ? YES : NO;
+        return isEven ? "yes" : "no";
     }
 }
