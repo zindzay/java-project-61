@@ -16,7 +16,8 @@ public final class DivisorGame {
             final var num1 = Utils.getNewNumber(MIN_NUMBER, MAX_NUMBER);
             final var num2 = Utils.getNewNumber(MIN_NUMBER, MAX_NUMBER);
 
-            questionAnswerPair[i] = new QuestionAnswerPair(getQuestion(num1, num2), String.valueOf(getAnswer(num1, num2)));
+            questionAnswerPair[i] = new QuestionAnswerPair(getQuestion(num1, num2),
+                    String.valueOf(getAnswer(num1, num2)));
         }
 
         return questionAnswerPair;

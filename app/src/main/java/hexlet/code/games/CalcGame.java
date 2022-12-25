@@ -21,7 +21,8 @@ public final class CalcGame {
             final var num2 = Utils.getNewNumber(MIN_NUMBER, MAX_NUMBER);
             final var operation = getOperation();
 
-            questionAnswerPair[i] = new QuestionAnswerPair(getQuestion(num1, num2, operation), String.valueOf(getAnswer(num1, num2, operation)));
+            questionAnswerPair[i] = new QuestionAnswerPair(getQuestion(num1, num2, operation),
+                    String.valueOf(getAnswer(num1, num2, operation)));
         }
 
         return questionAnswerPair;

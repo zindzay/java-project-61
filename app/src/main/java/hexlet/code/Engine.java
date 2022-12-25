@@ -5,7 +5,8 @@ import hexlet.code.games.QuestionAnswerPair;
 import java.util.Scanner;
 
 public final class Engine {
-    public static void play(Scanner scanner, String userName, String description, QuestionAnswerPair[] questionAnswerPairs) {
+    public static void play(Scanner scanner, String userName,
+                            String description, QuestionAnswerPair[] questionAnswerPairs) {
         System.out.println(description);
 
         for (var questionAnswerPair : questionAnswerPairs) {
@@ -19,6 +20,8 @@ public final class Engine {
 
                 return;
             }
+
+            System.out.println("Correct!");
         }
 
         System.out.println("Congratulations, " + userName + "!");
