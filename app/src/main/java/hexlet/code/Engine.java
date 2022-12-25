@@ -1,19 +1,19 @@
 package hexlet.code;
 
-import hexlet.code.games.Game;
+import hexlet.code.games.QuestionAnswerPair;
 
 import java.util.Scanner;
 
 public final class Engine {
-    public static void play(Scanner scanner, String userName, String description, Game[] games) {
+    public static void play(Scanner scanner, String userName, String description, QuestionAnswerPair[] questionAnswerPairs) {
         System.out.println(description);
 
-        for (var game : games) {
-            final var userAnswer = getUserAnswer(scanner, game.question());
+        for (var questionAnswerPair : questionAnswerPairs) {
+            final var userAnswer = getUserAnswer(scanner, questionAnswerPair.question());
 
-            if (!isRightAnswer(game.answer(), userAnswer)) {
+            if (!isRightAnswer(questionAnswerPair.answer(), userAnswer)) {
                 System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was "
-                        + "'" + game.answer() + "'.\n"
+                        + "'" + questionAnswerPair.answer() + "'.\n"
                         + "Let's try again, " + userName + "!"
                 );
 

@@ -11,17 +11,17 @@ public final class PrimeGame {
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 99;
 
-    public static Game[] create() {
-        final var games = new Game[Params.NUMBER_OF_QUESTIONS];
+    public static QuestionAnswerPair[] create() {
+        final var questionAnswerPair = new QuestionAnswerPair[Params.NUMBER_OF_QUESTIONS];
 
         for (var i = 0; i < Params.NUMBER_OF_QUESTIONS; i++) {
             final var question = getQuestion();
             final var answer = getAnswer(question);
 
-            games[i] = new Game(String.valueOf(question), answer);
+            questionAnswerPair[i] = new QuestionAnswerPair(String.valueOf(question), answer);
         }
 
-        return games;
+        return questionAnswerPair;
     }
 
     private static int getQuestion() {

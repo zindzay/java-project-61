@@ -9,17 +9,13 @@ public final class Menu {
 
         try {
             final var gameNumber = scanner.nextInt();
-
             System.out.println("Your choice: " + gameNumber);
-
             return Option.valueOf(gameNumber);
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Unknown option.");
-
             return Option.UNRECOGNIZED;
         } catch (InputMismatchException e) {
             System.out.println("The option must be an integer.");
-
             return Option.UNRECOGNIZED;
         }
     }

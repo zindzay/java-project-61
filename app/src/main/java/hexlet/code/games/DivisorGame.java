@@ -9,17 +9,17 @@ public final class DivisorGame {
     private static final int MIN_NUMBER = 0;
     private static final int MAX_NUMBER = 99;
 
-    public static Game[] create() {
-        final var games = new Game[Params.NUMBER_OF_QUESTIONS];
+    public static QuestionAnswerPair[] create() {
+        final var questionAnswerPair = new QuestionAnswerPair[Params.NUMBER_OF_QUESTIONS];
 
         for (var i = 0; i < Params.NUMBER_OF_QUESTIONS; i++) {
             final var num1 = Utils.getNewNumber(MIN_NUMBER, MAX_NUMBER);
             final var num2 = Utils.getNewNumber(MIN_NUMBER, MAX_NUMBER);
 
-            games[i] = new Game(getQuestion(num1, num2), String.valueOf(getAnswer(num1, num2)));
+            questionAnswerPair[i] = new QuestionAnswerPair(getQuestion(num1, num2), String.valueOf(getAnswer(num1, num2)));
         }
 
-        return games;
+        return questionAnswerPair;
     }
 
     private static String getQuestion(int num1, int num2) {

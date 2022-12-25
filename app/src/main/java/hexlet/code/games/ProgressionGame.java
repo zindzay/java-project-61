@@ -14,8 +14,8 @@ public final class ProgressionGame {
     private static final int MAX_STEP = 9;
     private static final String PLACEHOLDER = "..";
 
-    public static Game[] create() {
-        final var games = new Game[Params.NUMBER_OF_QUESTIONS];
+    public static QuestionAnswerPair[] create() {
+        final var questionAnswerPair = new QuestionAnswerPair[Params.NUMBER_OF_QUESTIONS];
 
         for (var i = 0; i < Params.NUMBER_OF_QUESTIONS; i++) {
             final var progression = getProgression();
@@ -23,10 +23,10 @@ public final class ProgressionGame {
             final var answer = getAnswer(progression);
             final var question = getQuestion(progression, answer);
 
-            games[i] = new Game(question, String.valueOf(answer));
+            questionAnswerPair[i] = new QuestionAnswerPair(question, String.valueOf(answer));
         }
 
-        return games;
+        return questionAnswerPair;
     }
 
     private static String getQuestion(int[] progression, int answer) {
