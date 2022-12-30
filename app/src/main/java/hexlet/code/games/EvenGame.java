@@ -1,7 +1,10 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
 import hexlet.code.Params;
 import hexlet.code.Utils;
+
+import java.util.Scanner;
 
 public final class EvenGame {
     public static final String DESCRIPTION = "Answer 'yes' if the number is even, otherwise answer 'no'.";
@@ -9,12 +12,16 @@ public final class EvenGame {
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 99;
 
-    public static QuestionAnswerPair[] create() {
+    public static void play(Scanner scanner) {
+        Engine.play(scanner, DESCRIPTION, initialize());
+    }
+
+    private static QuestionAnswerPair[] initialize() {
         final var questionAnswerPair = new QuestionAnswerPair[Params.NUMBER_OF_QUESTIONS];
 
         for (var i = 0; i < Params.NUMBER_OF_QUESTIONS; i++) {
-            final var question = getQuestion();
-            final var answer = getAnswer(question);
+            final var question = Utils.getNewNumber(MIN_NUMBER, MAX_NUMBER);
+            final var answer = isEven(question) ? "yes" : "no";
 
             questionAnswerPair[i] = new QuestionAnswerPair(String.valueOf(question), answer);
         }
@@ -22,13 +29,7 @@ public final class EvenGame {
         return questionAnswerPair;
     }
 
-    private static int getQuestion() {
-        return Utils.getNewNumber(MIN_NUMBER, MAX_NUMBER);
-    }
-
-    private static String getAnswer(int number) {
-        final var isEven = number % 2 == 0;
-
-        return isEven ? "yes" : "no";
+    private static boolean isEven(int number) {
+        return number % 2 == 0;
     }
 }

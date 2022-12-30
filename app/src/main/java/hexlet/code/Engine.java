@@ -5,14 +5,19 @@ import hexlet.code.games.QuestionAnswerPair;
 import java.util.Scanner;
 
 public final class Engine {
-    public static void play(Scanner scanner, String userName,
-                            String description, QuestionAnswerPair[] questionAnswerPairs) {
+    public static void play(Scanner scanner, String description, QuestionAnswerPair[] questionAnswerPairs) {
+        final var userName = Cli.findUserName(scanner);
+
         System.out.println(description);
 
         for (var questionAnswerPair : questionAnswerPairs) {
-            final var userAnswer = getUserAnswer(scanner, questionAnswerPair.question());
+            final var question = questionAnswerPair.question();
+            final var answer = questionAnswerPair.answer();
 
-            if (!isRightAnswer(questionAnswerPair.answer(), userAnswer)) {
+            System.out.print("Question: " + question + "\n" + "Your answer: ");
+            final var userAnswer = scanner.next();
+
+            if (!answer.equals(userAnswer)) {
                 System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was "
                         + "'" + questionAnswerPair.answer() + "'.\n"
                         + "Let's try again, " + userName + "!"
@@ -25,15 +30,5 @@ public final class Engine {
         }
 
         System.out.println("Congratulations, " + userName + "!");
-    }
-
-    private static boolean isRightAnswer(String answer, String userAnswer) {
-        return answer.equals(userAnswer);
-    }
-
-    private static String getUserAnswer(Scanner scanner, String question) {
-        System.out.print("Question: " + question + "\n" + "Your answer: ");
-
-        return scanner.next();
     }
 }

@@ -1,7 +1,10 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
 import hexlet.code.Params;
 import hexlet.code.Utils;
+
+import java.util.Scanner;
 
 public final class ProgressionGame {
     public static final String DESCRIPTION = "What number is missing in the progression?";
@@ -14,12 +17,19 @@ public final class ProgressionGame {
     private static final int MAX_STEP = 9;
     private static final String PLACEHOLDER = "..";
 
-    public static QuestionAnswerPair[] create() {
+    public static void play(Scanner scanner) {
+        Engine.play(scanner, DESCRIPTION, initialize());
+    }
+
+    private static QuestionAnswerPair[] initialize() {
         final var questionAnswerPair = new QuestionAnswerPair[Params.NUMBER_OF_QUESTIONS];
 
         for (var i = 0; i < Params.NUMBER_OF_QUESTIONS; i++) {
-            final var progression = getProgression();
-
+            final var startNumber = Utils.getNewNumber(MIN_NUMBER, MAX_NUMBER);
+            final var numberInProgression =
+                    Utils.getNewNumber(MIN_NUMBER_IN_PROGRESSION, MAX_NUMBER_IN_PROGRESSION);
+            final var step = Utils.getNewNumber(MIN_STEP, MAX_STEP);
+            final var progression = getProgression(startNumber, numberInProgression, step);
             final var answer = getAnswer(progression);
             final var question = getQuestion(progression, answer);
 
@@ -51,10 +61,7 @@ public final class ProgressionGame {
         return progression[hidedNumber];
     }
 
-    private static int[] getProgression() {
-        final var startNumber = Utils.getNewNumber(MIN_NUMBER, MAX_NUMBER);
-        final var numberInProgression = Utils.getNewNumber(MIN_NUMBER_IN_PROGRESSION, MAX_NUMBER_IN_PROGRESSION);
-        final var step = Utils.getNewNumber(MIN_STEP, MAX_STEP);
+    private static int[] getProgression(int startNumber, int numberInProgression, int step) {
         final var progression = new int[numberInProgression];
 
         var nextNumber = startNumber;

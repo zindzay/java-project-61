@@ -1,7 +1,7 @@
 package hexlet.code.menu;
 
 public enum Option {
-    UNRECOGNIZED(0, "Exit"),
+    EXIT(0, "Exit"),
     GREET(1, "Greet"),
     EVEN_GAME(2, "Even"),
     CALC_GAME(3, "Calc"),
