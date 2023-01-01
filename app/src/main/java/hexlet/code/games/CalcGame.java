@@ -16,11 +16,11 @@ public final class CalcGame {
     private static final int MIN_NUMBER = 0;
     private static final int MAX_NUMBER = 99;
 
-    public static void play(Scanner scanner) {
+    public static void play(Scanner scanner) throws UnsupportedOperationException {
         Engine.play(scanner, DESCRIPTION, initialize());
     }
 
-    private static QuestionAnswerPair[] initialize() {
+    private static QuestionAnswerPair[] initialize() throws UnsupportedOperationException {
         final var questionAnswerPair = new QuestionAnswerPair[Params.NUMBER_OF_QUESTIONS];
 
         for (var i = 0; i < Params.NUMBER_OF_QUESTIONS; i++) {
@@ -40,12 +40,12 @@ public final class CalcGame {
         return num1 + " " + operation + " " + num2;
     }
 
-    private static int getAnswer(int num1, int num2, String operation) {
+    private static int getAnswer(int num1, int num2, String operation) throws UnsupportedOperationException {
         return switch (operation) {
             case "+" -> num1 + num2;
             case "-" -> num1 - num2;
             case "*" -> num1 * num2;
-            default -> throw new UnsupportedOperationException();
+            default -> throw new UnsupportedOperationException("Unsupported arithmetic operation");
         };
     }
 }

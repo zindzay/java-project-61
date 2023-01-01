@@ -2,6 +2,7 @@ package hexlet.code.menu;
 
 import hexlet.code.Cli;
 import hexlet.code.exceptions.UnsupportedGameException;
+import hexlet.code.exceptions.UnsupportedOperationException;
 import hexlet.code.games.CalcGame;
 import hexlet.code.games.DivisorGame;
 import hexlet.code.games.EvenGame;
@@ -12,7 +13,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public final class Menu {
-    public static Option findGame(Scanner scanner) {
+    public static Option findGame(Scanner scanner) throws UnsupportedGameException {
         System.out.println("Please enter the game number and press Enter.\n" + Option.toStringOptions());
 
         try {
@@ -20,11 +21,12 @@ public final class Menu {
             System.out.println("Your choice: " + gameNumber);
             return Option.valueOf(gameNumber);
         } catch (IndexOutOfBoundsException | InputMismatchException e) {
-            throw new UnsupportedGameException();
+            throw new UnsupportedGameException("Game not found");
         }
     }
 
-    public static void playGame(Scanner scanner, Option option) {
+    public static void playGame(Scanner scanner, Option option)
+            throws UnsupportedGameException, UnsupportedOperationException {
         switch (option) {
             case EVEN_GAME -> EvenGame.play(scanner);
             case CALC_GAME -> CalcGame.play(scanner);
@@ -35,7 +37,7 @@ public final class Menu {
             case EXIT -> {
                 // Пользователь решил выйти из игры
             }
-            default -> throw new UnsupportedGameException();
+            default -> throw new UnsupportedGameException("Game not found");
         }
     }
 }
