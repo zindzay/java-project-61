@@ -26,48 +26,35 @@ public final class ProgressionGame {
 
         for (var i = 0; i < Params.NUMBER_OF_QUESTIONS; i++) {
             final var startNumber = Utils.getNewNumber(MIN_NUMBER, MAX_NUMBER);
-            final var numberInProgression =
-                    Utils.getNewNumber(MIN_NUMBER_IN_PROGRESSION, MAX_NUMBER_IN_PROGRESSION);
+            final var numberInProgression = Utils.getNewNumber(MIN_NUMBER_IN_PROGRESSION, MAX_NUMBER_IN_PROGRESSION);
             final var step = Utils.getNewNumber(MIN_STEP, MAX_STEP);
-            final var progression = getProgression(startNumber, numberInProgression, step);
-            final var answer = getAnswer(progression);
-            final var question = getQuestion(progression, answer);
 
-            questionAnswerPair[i] = new QuestionAnswerPair(question, String.valueOf(answer));
+            questionAnswerPair[i] = createQuestionAnswerPair(startNumber, numberInProgression, step);
         }
 
         return questionAnswerPair;
     }
 
-    private static String getQuestion(int[] progression, int answer) {
-        final var sb = new StringBuilder();
+    private static QuestionAnswerPair createQuestionAnswerPair(int startNumber, int numberInProgression, int step) {
+        final var progression = getProgression(startNumber, numberInProgression, step);
 
-        for (var number : progression) {
-            if (number == answer) {
-                sb.append(PLACEHOLDER).append(" ");
-            } else {
-                sb.append(number).append(" ");
-            }
-        }
+        final var hidedNumberIndex = Utils.getNewNumber(0, progression.length - 1);
+        final var answer = progression[hidedNumberIndex];
 
-        return sb.toString();
+        progression[hidedNumberIndex] = PLACEHOLDER;
+
+        final var question = String.join(" ", progression);
+
+        return new QuestionAnswerPair(question, answer);
     }
 
-    private static int getAnswer(int[] progression) {
-        final var firstProgressionIndex = 0;
-        final var lastProgressionIndex = progression.length - 1;
-        final var hidedNumber = Utils.getNewNumber(firstProgressionIndex, lastProgressionIndex);
-
-        return progression[hidedNumber];
-    }
-
-    private static int[] getProgression(int startNumber, int numberInProgression, int step) {
-        final var progression = new int[numberInProgression];
+    private static String[] getProgression(int startNumber, int numberInProgression, int step) {
+        final var progression = new String[numberInProgression];
 
         var nextNumber = startNumber;
 
         for (var i = 0; i < numberInProgression; i++) {
-            progression[i] = nextNumber;
+            progression[i] = String.valueOf(nextNumber);
             nextNumber += step;
         }
 
