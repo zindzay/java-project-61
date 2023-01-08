@@ -35,7 +35,6 @@ public final class Menu {
             case PRIME -> PrimeGame.play(scanner);
             case GREET -> Cli.findUserName(scanner);
             case EXIT -> {
-                // Пользователь решил выйти из игры
             }
             default -> throw new UnsupportedGameException("Game not found");
         }
