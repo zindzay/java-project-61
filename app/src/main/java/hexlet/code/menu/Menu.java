@@ -9,31 +9,24 @@ import hexlet.code.games.EvenGame;
 import hexlet.code.games.PrimeGame;
 import hexlet.code.games.ProgressionGame;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import static hexlet.code.Utils.getScanner;
 
 public final class Menu {
-    public static Option findGame(Scanner scanner) throws UnsupportedGameException {
+    public static void invoke() throws UnsupportedGameException, UnsupportedOperationException {
         System.out.println("Please enter the game number and press Enter.\n" + Option.toStringOptions());
 
-        try {
-            final var gameNumber = scanner.nextInt();
-            System.out.println("Your choice: " + gameNumber);
-            return Option.valueOf(gameNumber);
-        } catch (IndexOutOfBoundsException | InputMismatchException e) {
-            throw new UnsupportedGameException("Game not found");
-        }
-    }
+        final var scanner = getScanner();
+        final var gameNumber = scanner.nextInt();
 
-    public static void playGame(Scanner scanner, Option option)
-            throws UnsupportedGameException, UnsupportedOperationException {
-        switch (option) {
-            case EVEN_GAME -> EvenGame.play(scanner);
-            case CALC_GAME -> CalcGame.play(scanner);
-            case DIVISOR_GAME -> DivisorGame.play(scanner);
-            case PROGRESSION -> ProgressionGame.play(scanner);
-            case PRIME -> PrimeGame.play(scanner);
-            case GREET -> Cli.findUserName(scanner);
+        System.out.println("Your choice: " + gameNumber);
+
+        switch (Option.valueOf(gameNumber)) {
+            case EVEN_GAME -> EvenGame.play();
+            case CALC_GAME -> CalcGame.play();
+            case DIVISOR_GAME -> DivisorGame.play();
+            case PROGRESSION -> ProgressionGame.play();
+            case PRIME -> PrimeGame.play();
+            case GREET -> Cli.greet();
             case EXIT -> {
             }
             default -> throw new UnsupportedGameException("Game not found");

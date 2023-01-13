@@ -5,8 +5,6 @@ import hexlet.code.Params;
 import hexlet.code.Utils;
 import hexlet.code.exceptions.UnsupportedOperationException;
 
-import java.util.Scanner;
-
 public final class CalcGame {
     public static final String DESCRIPTION = "What is the result of the expression?";
 
@@ -16,8 +14,8 @@ public final class CalcGame {
     private static final int MIN_NUMBER = 0;
     private static final int MAX_NUMBER = 99;
 
-    public static void play(Scanner scanner) throws UnsupportedOperationException {
-        Engine.play(scanner, DESCRIPTION, initialize());
+    public static void play() throws UnsupportedOperationException {
+        Engine.play(DESCRIPTION, initialize());
     }
 
     private static QuestionAnswerPair[] initialize() throws UnsupportedOperationException {
@@ -36,11 +34,12 @@ public final class CalcGame {
         return questionAnswerPair;
     }
 
-    private static String getQuestion(int num1, int num2, String operation) {
+    private static String getQuestion(final int num1, final int num2, String operation) {
         return num1 + " " + operation + " " + num2;
     }
 
-    private static int getAnswer(int num1, int num2, String operation) throws UnsupportedOperationException {
+    private static int getAnswer(final int num1, final int num2, final String operation)
+            throws UnsupportedOperationException {
         return switch (operation) {
             case "+" -> num1 + num2;
             case "-" -> num1 - num2;

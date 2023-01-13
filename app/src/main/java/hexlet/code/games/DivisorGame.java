@@ -4,16 +4,14 @@ import hexlet.code.Engine;
 import hexlet.code.Params;
 import hexlet.code.Utils;
 
-import java.util.Scanner;
-
 public final class DivisorGame {
     public static final String DESCRIPTION = "Find the greatest common divisor of given numbers.";
 
     private static final int MIN_NUMBER = 0;
     private static final int MAX_NUMBER = 99;
 
-    public static void play(Scanner scanner) {
-        Engine.play(scanner, DESCRIPTION, initialize());
+    public static void play() {
+        Engine.play(DESCRIPTION, initialize());
     }
 
     private static QuestionAnswerPair[] initialize() {
@@ -31,11 +29,11 @@ public final class DivisorGame {
         return questionAnswerPair;
     }
 
-    private static String getQuestion(int num1, int num2) {
+    private static String getQuestion(final int num1, final int num2) {
         return num1 + " " + num2;
     }
 
-    private static int getAnswer(int num1, int num2) {
+    private static int getAnswer(final int num1, final int num2) {
         var max = Math.max(num1, num2);
         var min = Math.min(num1, num2);
 

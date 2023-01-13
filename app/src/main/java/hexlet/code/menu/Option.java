@@ -1,5 +1,7 @@
 package hexlet.code.menu;
 
+import hexlet.code.exceptions.UnsupportedGameException;
+
 public enum Option {
     EXIT(0, "Exit"),
     GREET(1, "Greet"),
@@ -12,21 +14,25 @@ public enum Option {
     private final int id;
     private final String description;
 
-    Option(int newId, String newDescription) {
+    Option(final int newId, final String newDescription) {
         this.id = newId;
         this.description = newDescription;
     }
 
     private static final Option[] VALUES = values();
 
-    public static Option valueOf(int id) {
-        return VALUES[id];
+    public static Option valueOf(final int id) {
+        try {
+            return VALUES[id];
+        } catch (Exception e) {
+            throw new UnsupportedGameException("Game not found");
+        }
     }
 
     public static String toStringOptions() {
         final var sb = new StringBuilder();
 
-        for (var value : VALUES) {
+        for (final var value : VALUES) {
             sb.append(value.id).append(" - ").append(value.description).append("\n");
         }
 

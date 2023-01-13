@@ -4,16 +4,14 @@ import hexlet.code.Engine;
 import hexlet.code.Params;
 import hexlet.code.Utils;
 
-import java.util.Scanner;
-
 public final class EvenGame {
     public static final String DESCRIPTION = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 99;
 
-    public static void play(Scanner scanner) {
-        Engine.play(scanner, DESCRIPTION, initialize());
+    public static void play() {
+        Engine.play(DESCRIPTION, initialize());
     }
 
     private static QuestionAnswerPair[] initialize() {
@@ -29,7 +27,7 @@ public final class EvenGame {
         return questionAnswerPair;
     }
 
-    private static boolean isEven(int number) {
+    private static boolean isEven(final int number) {
         return number % 2 == 0;
     }
 }

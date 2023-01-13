@@ -4,8 +4,6 @@ import hexlet.code.Engine;
 import hexlet.code.Params;
 import hexlet.code.Utils;
 
-import java.util.Scanner;
-
 public final class ProgressionGame {
     public static final String DESCRIPTION = "What number is missing in the progression?";
 
@@ -17,8 +15,8 @@ public final class ProgressionGame {
     private static final int MAX_STEP = 9;
     private static final String PLACEHOLDER = "..";
 
-    public static void play(Scanner scanner) {
-        Engine.play(scanner, DESCRIPTION, initialize());
+    public static void play() {
+        Engine.play(DESCRIPTION, initialize());
     }
 
     private static QuestionAnswerPair[] initialize() {
@@ -35,7 +33,8 @@ public final class ProgressionGame {
         return questionAnswerPair;
     }
 
-    private static QuestionAnswerPair createQuestionAnswerPair(int startNumber, int numberInProgression, int step) {
+    private static QuestionAnswerPair createQuestionAnswerPair(
+            final int startNumber, final int numberInProgression, final int step) {
         final var progression = getProgression(startNumber, numberInProgression, step);
 
         final var hidedNumberIndex = Utils.getNewNumber(0, progression.length - 1);
@@ -48,7 +47,7 @@ public final class ProgressionGame {
         return new QuestionAnswerPair(question, answer);
     }
 
-    private static String[] getProgression(int startNumber, int numberInProgression, int step) {
+    private static String[] getProgression(final int startNumber, final int numberInProgression, final int step) {
         final var progression = new String[numberInProgression];
 
         var nextNumber = startNumber;

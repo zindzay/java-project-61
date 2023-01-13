@@ -2,15 +2,18 @@ package hexlet.code;
 
 import hexlet.code.games.QuestionAnswerPair;
 
-import java.util.Scanner;
+import static hexlet.code.Params.WELCOME_MESSAGE;
+import static hexlet.code.Utils.getScanner;
 
 public final class Engine {
-    public static void play(Scanner scanner, String description, QuestionAnswerPair[] questionAnswerPairs) {
-        final var userName = Cli.findUserName(scanner);
-
+    public static void play(final String description, final QuestionAnswerPair[] questionAnswerPairs) {
+        final var scanner = getScanner();
+        System.out.print(WELCOME_MESSAGE);
+        String userName = scanner.next();
+        System.out.println("Hello, " + userName + "!");
         System.out.println(description);
 
-        for (var questionAnswerPair : questionAnswerPairs) {
+        for (final var questionAnswerPair : questionAnswerPairs) {
             final var question = questionAnswerPair.question();
             final var answer = questionAnswerPair.answer();
 

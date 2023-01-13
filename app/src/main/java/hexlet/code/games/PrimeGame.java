@@ -4,7 +4,6 @@ import hexlet.code.Engine;
 import hexlet.code.Params;
 import hexlet.code.Utils;
 
-import java.util.Scanner;
 import java.util.stream.IntStream;
 
 public final class PrimeGame {
@@ -13,8 +12,8 @@ public final class PrimeGame {
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 99;
 
-    public static void play(Scanner scanner) {
-        Engine.play(scanner, DESCRIPTION, initialize());
+    public static void play() {
+        Engine.play(DESCRIPTION, initialize());
     }
 
     private static QuestionAnswerPair[] initialize() {
@@ -30,7 +29,7 @@ public final class PrimeGame {
         return questionAnswerPair;
     }
 
-    private static boolean isPrime(int number) {
+    private static boolean isPrime(final int number) {
         return number > 1
                 && IntStream.rangeClosed(2, (int) Math.sqrt(number))
                 .noneMatch(n -> (number % n == 0));
